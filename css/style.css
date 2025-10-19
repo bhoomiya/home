@@ -1,0 +1,283 @@
+/* --- CSS Variables for Easy Customization --- */
+:root {
+    --primary-bg: #10172A; /* Dark Navy Blue Background */
+    --secondary-bg: #182245; /* Slightly Lighter Navy for boxes */
+    --accent-color: #39FF14; /* Neon Green for highlights/text */
+    --text-color: #f0f0f0; /* Off-White for body text */
+    --font-pixel: 'Press Start 2P', cursive;
+    --font-body: 'Arial', sans-serif;
+    --border-width: 4px;
+    
+    /* Percentage for flexible desktop menu width */
+    --menu-width-desktop: 18%; 
+    /* Fixed pixel width for mobile transition */
+    --menu-width-mobile-fixed: 250px; 
+}
+
+/* --- Base Styles and Global Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* --- Typography and Pixel Art Font --- */
+h1, h2, h3 {
+    font-family: var(--font-pixel);
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+/* --- Menu Styling (Fixed Sidebar) --- */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    
+    /* Mobile: Use fixed pixel width */
+    width: var(--menu-width-mobile-fixed); 
+    
+    padding: 30px;
+    background-color: var(--secondary-bg);
+    border-right: var(--border-width) solid var(--accent-color);
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: none; 
+    
+    /* Hidden off-screen by default */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    z-index: 10;
+}
+
+/* Mobile: Slide into view when active class is added by JS */
+.nav-menu.active {
+    transform: translateX(0);
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.nav-menu li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--secondary-bg);
+}
+
+.nav-menu a {
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+
+.nav-menu a:hover {
+    color: var(--text-color);
+    background-color: var(--primary-bg);
+}
+
+.menu-hint {
+    font-size: 0.7rem;
+    font-family: var(--font-pixel);
+    color: var(--text-color);
+    margin-top: 20px;
+}
+
+/* --- Hamburger Button Styling (Mobile Only) --- */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 20;
+    display: block;
+    width: 40px;
+    height: 30px;
+    background: var(--secondary-bg);
+    border: 2px solid var(--accent-color);
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 4px 0;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Content Wrapper (For content spacing) --- */
+.content-wrapper {
+    flex-grow: 1;
+    padding: 20px;
+    padding-top: 80px; /* Space for the mobile hamburger button */
+    max-width: 100%;
+}
+
+.header-section {
+    text-align: left;
+    padding: 0 0 60px 0;
+    width: 100%;
+    max-width: 900px;
+}
+
+.tagline {
+    font-family: var(--font-pixel);
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    min-height: 20px;
+}
+
+/* --- Pixelated Box Effect (Mission Section) --- */
+.pixel-box {
+    background-color: var(--secondary-bg);
+    padding: 30px;
+    border: var(--border-width) solid var(--accent-color);
+    /* Blocky retro shadow effect */
+    box-shadow: 
+        var(--border-width) var(--border-width) 0 0 var(--accent-color), 
+        calc(var(--border-width) * 2) calc(var(--border-width) * 2) 0 0 var(--primary-bg);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-content {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    padding-top: 30px;
+    margin: 0 auto; 
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    color: var(--text-color);
+    border-top: 2px solid var(--secondary-bg);
+}
+
+/* General Link Style (Used in Footer and Menu) */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Styling for social media icons in the footer */
+.footer-section p a {
+    margin: 0 8px; /* Spacing between icons */
+    font-size: 1.2rem; /* Icon size */
+}
+
+a:hover {
+    color: var(--text-color);
+}
+
+/* --- Blinking Cursor Effect --- */
+.cursor-blink {
+    animation: blink 0.7s infinite step-start;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- BACKDROP EFFECT STYLING --- */
+body.menu-hovering .content-wrapper {
+    position: relative;
+    /* This ensures the backdrop covers the content */
+}
+
+body.menu-hovering .content-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Dark semi-transparent color for the dimming effect */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 5;
+    pointer-events: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+/* ======================================================= */
+/* --- DESKTOP/LARGE SCREEN MEDIA QUERY (Fixed Left Menu) --- */
+/* ======================================================= */
+@media (min-width: 768px) {
+    
+    /* Desktop: Use percentage width and ensure visibility */
+    .nav-menu {
+        width: var(--menu-width-desktop); /* 18% of screen width */
+        transform: translateX(0);
+    }
+
+    /* Desktop: Hide the hamburger button */
+    .hamburger {
+        display: none;
+    }
+    
+    /* Desktop: Shift the main content over using the percentage width */
+    .content-wrapper {
+        margin-left: var(--menu-width-desktop); /* Match menu width */
+        padding: 40px; 
+        padding-top: 40px;
+        /* Constrain main content width to prevent stretching too wide */
+        max-width: calc(100% - var(--menu-width-desktop)); 
+    }
+    
+    /* Ensure pixel box content adapts to the new width */
+    .pixel-box {
+        max-width: none;
+    }
+
+}
